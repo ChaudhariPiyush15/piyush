@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alpha | Portfolio</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #121212;
+      color: white;
+      scroll-behavior: smooth;
+    }
+    #loader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: black;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      z-index: 9999;
+      animation: fadeOut 1.5s 2s forwards;
+    }
+    @keyframes fadeOut {
+      to {
+        opacity: 0;
+        visibility: hidden;
+      }
+    }
+    .navbar {
+      width: 100%;
+      background: #1e1e1e;
+      display: flex;
+      justify-content: space-between;
+      padding: 1rem 2rem;
+      position: fixed;
+      top: 0;
+      z-index: 1000;
+    }
+    .navbar h1 {
+      color: #0ff;
+    }
+    .hamburger {
+      cursor: pointer;
+      width: 25px;
+      height: 3px;
+      background: white;
+      position: relative;
+    }
+    .hamburger::before,
+    .hamburger::after {
+      content: '';
+      position: absolute;
+      width: 25px;
+      height: 3px;
+      background: white;
+      transition: 0.3s;
+    }
+    .hamburger::before {
+      top: -8px;
+    }
+    .hamburger::after {
+      top: 8px;
+    }
+    .nav-links {
+      display: none;
+      flex-direction: column;
+      background: #000;
+      position: absolute;
+      top: 60px;
+      right: 20px;
+      padding: 1rem;
+    }
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      margin: 0.5rem 0;
+    }
+    .navbar.active .nav-links {
+      display: flex;
+    }
+    .nav-links a:hover {
+      color: #0ff;
+    }
+    section {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 100px 20px;
+      text-align: center;
+    }
+    #about {
+      background: #1e1e1e;
+    }
+    #about img {
+      max-width: 300px;
+      border-radius: 12px;
+      margin-bottom: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <!-- Loader -->
+  <div id="loader">Loading Alpha...</div>
+
+  <!-- Navbar -->
+  <div class="navbar" onclick="toggleMenu()">
+    <h1>Alpha</h1>
+    <div class="hamburger"></div>
+    <div class="nav-links">
+      <a href="#about">About</a>
+    </div>
+  </div>
+
+  <!-- About Section -->
+  <section id="about">
+    <img src="piyush.jgp.JPG"  alt="Piyush Chaudhari">
+
+    <h2>My Name is Piyush Chaudhari</h2>
+    <p>I am passionate about learning, technology, and innovation. Welcome to my world!</p>
+  </section>
+
+  <script>
+    function toggleMenu() {
+      document.querySelector('.navbar').classList.toggle('active');
+    }
+
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        const target = document.querySelector(link.getAttribute('href'));
+        target.scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+  </script>
+</body>
+</html>
